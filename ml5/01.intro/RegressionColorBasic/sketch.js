@@ -51,7 +51,7 @@ function setup() {
   // note in this demo we just clear the canvas at the beginning
   fill(255);
   noStroke();
-  text("Click to place a point\nPress 1-3 to change color\nPress 't' to train.", 20, 20);
+  text("Click to place a point\nPress 1-3 to change color\nPress 't' to train the machine.", 20, 20);
 
   // Setup the neural network
   // For each example, the network has two inputs [x, y] (the mouse position)
@@ -88,7 +88,7 @@ function draw() {
      //       (of course, in both these cases you might want to hide the data points)
      // console.log('mouse color:', mouseColor);
      fill(mouseColor[0], mouseColor[1], mouseColor[2]);
-     rect(0, height-50, 50, 50);
+     ellipse(mouseX, mouseY, 40, 40);
    }
 }
 
@@ -124,6 +124,10 @@ function keyPressed() {
     ourColor = color(2,255,2); // green
   } else if (key == "3") {
     ourColor = color(3,3,255); // blue
+  } else if (key == "4") {
+    ourColor = color(253,127,4); // orange
+  } else if (key == "5") {
+    ourColor = color(253,51,254); // pink
   } else if (key == "t") {
     // WHERE THE TRAINING HAPPENS: no need to change this
     // More information here: https://learn.ml5js.org/#/reference/neural-network?id=train

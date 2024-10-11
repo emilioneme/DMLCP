@@ -25,7 +25,7 @@ function setup() {
   // be called
   video = createCapture(VIDEO, videoReady);
   video.size(640, 480);
-  video.hide();
+  //video.hide();
 }
 
 function videoReady(stream) {
@@ -57,16 +57,21 @@ function draw() {
   //       the bounding box of the detected object?
 
   // Loop through all our detections
+  var i = 0;
   for (let object of detections) {
+
+    i++;
 
     // We use lerp to color the border somewhere between red and green based on
     // the confidence of the prediction
+    //*
     stroke(lerpColor(color(255,0,0), color(0, 255, 0), object.confidence));
     strokeWeight(3);
     noFill();
+    //*/
 
     // Draw a rectangle around the recognized object
-    rect(object.x, object.y, object.width, object.height);
+    //rect(object.x, object.y, object.width, object.height);
 
     // In this commented version, we use the normalised values, these represent
     // the percentage across the screen as a value between 0 and 1 – so we
@@ -78,10 +83,18 @@ function draw() {
     //      object.normalized.height * video.height);
 
     // Draw the label
+    //*
     fill(255);
     noStroke();
     textSize(24);
     text(object.label, object.x + 10, object.y + 24);
+    //*/
+
+    fill(255);
+    noStroke();
+    textSize(24);
+    text(object.label, 10, 20 * i);
+
   }
 }
 
